@@ -1,113 +1,196 @@
-import Image from 'next/image'
+"use client";
+import Image from "next/image";
+import ReactStars from "react-stars";
 
 export default function Home() {
+  const products = [
+    {
+      id: 1,
+      name: "Laptop sleeve MacBook",
+      href: "#",
+      imageSrc:
+        "https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e68b497e229146b818_leptop%20sleeve-min.png",
+      discription: "Organic Cotton, fairtrade certified",
+      price: 59.0,
+      rating: 5,
+      review: 121,
+    },
+    {
+      id: 2,
+      name: "AirPods Max",
+      href: "#",
+      imageSrc:
+        "https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e4aed3c6720e446aa1_airpod%20max-min.png",
+      discription: "A perfect balance of high-fidelity audio",
+      price: 559.0,
+      rating: 5,
+      review: 23,
+    },
+    {
+      id: 3,
+      name: "Flower Laptop Sleeve",
+      href: "#",
+      imageSrc:
+        "https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e55cc9361a8ecce6d4_flower%20leptop%20sleeve-min.png",
+      discription: "15 in. x 10 in. -Flap top closure",
+      price: 39.0,
+      rating: 5,
+      review: 33,
+    },
+    {
+      id: 3,
+      name: "Flower Laptop Sleeve",
+      href: "#",
+      imageSrc:
+        "https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e55cc9361a8ecce6d4_flower%20leptop%20sleeve-min.png",
+      discription: "15 in. x 10 in. -Flap top closure",
+      price: 39.0,
+      rating: 5,
+      review: 33,
+    },
+    {
+      id: 1,
+      name: "Laptop sleeve MacBook",
+      href: "#",
+      imageSrc:
+        "https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e68b497e229146b818_leptop%20sleeve-min.png",
+      discription: "Organic Cotton, fairtrade certified",
+      price: 59.0,
+      rating: 5,
+      review: 121,
+    },
+
+    {
+      id: 2,
+      name: "Flower Laptop Sleeve",
+      href: "#",
+      imageSrc:
+        "https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e55cc9361a8ecce6d4_flower%20leptop%20sleeve-min.png",
+      discription: "15 in. x 10 in. -Flap top closure",
+      price: 39.0,
+      rating: 5,
+      review: 33,
+    },
+    {
+      id: 1,
+      name: "Laptop sleeve MacBook",
+      href: "#",
+      imageSrc:
+        "https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e68b497e229146b818_leptop%20sleeve-min.png",
+      discription: "Organic Cotton, fairtrade certified",
+      price: 59.0,
+      rating: 5,
+      review: 121,
+    },
+
+    {
+      id: 3,
+      name: "Flower Laptop Sleeve",
+      href: "#",
+      imageSrc:
+        "https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e55cc9361a8ecce6d4_flower%20leptop%20sleeve-min.png",
+      discription: "15 in. x 10 in. -Flap top closure",
+      price: 39.0,
+      rating: 5,
+      review: 33,
+    },
+  ];
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <div className="p-[70px]">
+        <div className="  h-[320px] relative">
+          <Image src="/hero.webp" alt="hero  image" fill={true} />
+          <div className=" absolute h-60 w-80 bg-transparent   font-bold  pt-48 text-2xl   m-auto left-0 right-0">
+            Pay in your local currency and shop with confident
+          </div>
+          <div className="   bg-zinc-800 hover:bg-green-900  font-semibold text-white py-2 px-4 border border-gray-900 hover:border-transparent rounded-full absolute  bottom-3    left-40 ">
+            Shop Now
+          </div>
+        </div>
+        <div className=" p-16  font-bold  text-4xl">
+          {"Today's Best Daily Deals"}
+        </div>
+        <div className="  pt-20 grid  relative grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+          {products.map((product) => (
+            <div key={product.id}>
+              <Image
+                className="hover:grow hover:shadow-lg bg-zinc-100 w-[350px]"
+                src={product.imageSrc}
+                alt={""}
+                width={350}
+                height={200}
+              />
+
+              <div className="flex items-center text-gray-900font-sans pt-1 justify-between pr-3 ">
+                <p className="">{product.name}</p>
+                <p className=" text-gray-900">{`$${product.price}`}</p>
+              </div>
+
+              <p className="pt-1  text-gray-900 font-serif text-sm">{`${product.discription}`}</p>
+
+              <div className="flex items-center">
+                <ReactStars
+                  count={5}
+                  size={14}
+                  color2={"#2cb978"}
+                  edit={false}
+                  color1={"#2cb978"}
+                />
+                {`(${product.review})`}
+              </div>
+
+              <div className="pt-2 ">
+                <button className="bg-transparent hover:bg-green-900  text-gray-900 font-semibold hover:text-white py-2 px-4 border border-gray-900 hover:border-transparent rounded-full ">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className=" p-16  font-bold  text-4xl">
+          Most Selling Products
+          <p className=""></p>
+        </div>
+
+        <div className="  pt-20 grid  relative grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+          {products.map((product) => (
+            <div key={product.id}>
+              <Image
+                className="hover:grow hover:shadow-lg bg-zinc-100 w-[350px]"
+                src={product.imageSrc}
+                alt={""}
+                width={350}
+                height={200}
+              />
+
+              <div className="flex items-center text-gray-900font-sans pt-1 justify-between pr-3 ">
+                <p className="">{product.name}</p>
+                <p className=" text-gray-900">{`$${product.price}`}</p>
+              </div>
+
+              <p className="pt-1  text-gray-900 font-serif text-sm">{`${product.discription}`}</p>
+
+              <div className="flex items-center">
+                <ReactStars
+                  count={5}
+                  size={14}
+                  color2={"#2cb978"}
+                  edit={false}
+                  color1={"#2cb978"}
+                />
+                {`(${product.review})`}
+              </div>
+
+              <div className="pt-2 ">
+                <button className="bg-transparent hover:bg-green-900  text-gray-900 font-semibold hover:text-white py-2 px-4 border border-gray-900 hover:border-transparent rounded-full ">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    </>
+  );
 }
