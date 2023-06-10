@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import { MdAccountCircle } from "react-icons/md";
-import { LuShoppingCart } from "react-icons/lu";
+
+import { MdAddShoppingCart, MdPersonOutline } from "react-icons/md";
 import { BiSearch } from "react-icons/bi";
 import { TfiMenu } from "react-icons/tfi";
 import Image from "next/image";
@@ -34,24 +34,30 @@ export const TopNavigation = () => {
         >
           {open ? <AiOutlineClose /> : <TfiMenu />}
         </div>
-        <div
-          className={`sm:pl-1  text-base md:flex md:items-center   pt-3  md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-1 transition-all duration-500 ease-in  
+        <Link href={"/"}>
+          <div
+            className={`sm:pl-1  text-base md:flex md:items-center   pt-3  md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-1 transition-all duration-500 ease-in  
           ${open ? "" : "hidden"} `}
-        >
-          Home
-        </div>
-        <div
-          className={`sm:pl-1 md:flex  text-base  md:items-center   pt-3  md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-1 transition-all duration-500 ease-in  
+          >
+            Home
+          </div>
+        </Link>
+        <Link href={"/shop"}>
+          <div
+            className={`sm:pl-1 md:flex  text-base  md:items-center   pt-3  md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-1 transition-all duration-500 ease-in  
         ${open ? "" : "hidden"} `}
-        >
-          Shop
-        </div>
-        <div
-          className={`sm:pl-1 md:flex  text-base  md:items-center   pt-3  md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-1 transition-all duration-500 ease-in  
+          >
+            Shop
+          </div>
+        </Link>
+        <Link href={"/deals"}>
+          <div
+            className={`sm:pl-1 md:flex  text-base  md:items-center   pt-3  md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-1 transition-all duration-500 ease-in  
         ${open ? "" : "hidden"} `}
-        >
-          Deals
-        </div>
+          >
+            Deals
+          </div>
+        </Link>
 
         <div className=" top-5 absolute md:static gap-2  items-center left-36  pt-1  ">
           <div className="flex w-full relative items-center  justify-end">
@@ -67,20 +73,24 @@ export const TopNavigation = () => {
             />
           </div>
         </div>
-        <div
-          className={`flex  text-base  items-center gap-1  pt-4
+        <Link href={"/account"}>
+          <div
+            className={`flex  text-base  items-center gap-1  pt-4
          ${open ? "" : "hidden md:flex"}`}
-        >
-          <MdAccountCircle size={22} />
-          <span>Account</span>
-        </div>
-        <div
-          className={`flex  text-base  items-center gap-1  pt-4
+          >
+            <MdPersonOutline size={22} />
+            <span>Account</span>
+          </div>
+        </Link>
+        <Link href={"/cart"}>
+          <div
+            className={`flex  text-base  items-center gap-1  pt-4
          ${open ? "" : "hidden md:flex"}`}
-        >
-          <LuShoppingCart size={22} />
-          <span>Cart</span>
-        </div>
+          >
+            <MdAddShoppingCart size={22} />
+            <span>Cart</span>
+          </div>
+        </Link>
       </div>
     </div>
   );
