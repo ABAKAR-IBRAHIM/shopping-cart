@@ -6,6 +6,7 @@ import Image from "next/image";
 import { HiMinusSm, HiOutlinePlusSm } from "react-icons/hi";
 import { useSelector } from "react-redux";
 import { RootState } from "../Redux/store";
+import Link from "next/link";
 export default function Page() {
   const [counter, setCounter] = useState(1);
   const items = useSelector((state: RootState) => state.cart.items);
@@ -27,6 +28,18 @@ export default function Page() {
     }
   }
 
+  if (items.length == 0)
+    return (
+      <div className="flex justify-center flex-col">
+        <div className=" text-center  md: pt-56">Your basket is empty</div>
+        <Link
+          className=" text-center  text-red-500 font-bold text-lg p-4   "
+          href={"/shop"}
+        >
+          Shop Now
+        </Link>
+      </div>
+    );
   return (
     <div className="p-44 grid md:grid-cols-3 bg-slate-100/95  gap-4 ">
       <div className="   justify-between  col-span-2">
