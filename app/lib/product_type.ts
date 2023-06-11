@@ -8,6 +8,7 @@ export default interface ProductModel {
   review: number;
   quantity: number;
   totalPrice: number;
+  totalItems: number;
   images: [
     {
       _id: any;

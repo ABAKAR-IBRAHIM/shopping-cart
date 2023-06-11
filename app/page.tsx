@@ -79,7 +79,7 @@ export default function Home() {
 
               <div className="flex items-center text-gray-900font-sans pt-1   justify-between pr-16 ">
                 <p className="">{product.name}</p>
-                <p className=" text-gray-900">{`$${4}`}</p>
+                <p className=" text-gray-900">{`$${product.price}`}</p>
               </div>
 
               <p className="pt-1  text-gray-900 font-serif text-sm">{`${product.discription}`}</p>

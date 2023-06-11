@@ -7,25 +7,23 @@ import { HiMinusSm, HiOutlinePlusSm } from "react-icons/hi";
 import { useSelector } from "react-redux";
 import { RootState } from "../Redux/store";
 import Link from "next/link";
+import ProductModel from "../lib/product_type";
+import { useDispatch } from "react-redux";
+import {
+  incrementQuantity,
+  decrementQuantity,
+} from "../Redux/feature/cart/cartSlice";
 export default function Page() {
   const [counter, setCounter] = useState(1);
   const items = useSelector((state: RootState) => state.cart.items);
-
-  function increment() {
-    if (counter < 10) {
-      setCounter((prev) => prev + 1);
-    }
+  const count = useSelector((state: RootState) => state.cart.totalQuantity);
+  const totalAmount = useSelector((state: RootState) => state.cart.totalAmount);
+  const dispatch = useDispatch();
+  function increment(product: ProductModel) {
+    dispatch(incrementQuantity({ product }));
   }
-  function decrement() {
-    if (counter > 1) {
-      setCounter((prev) => prev - 1);
-    }
-  }
-
-  function onInputNumberChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
-    if (+e.currentTarget.value >= 1 && +e.currentTarget.value <= 10) {
-      setCounter(+e.currentTarget.value);
-    }
+  function decrement(product: ProductModel) {
+    dispatch(decrementQuantity({ product }));
   }
 
   if (items.length == 0)
@@ -69,7 +67,7 @@ export default function Page() {
                         </h3>
 
                         <h3 className=" pt-2 font-semibold">{`$${
-                          product.price
+                          product.totalPrice
                         } Or $${Math.round(product.price * 0.1).toFixed(
                           2
                         )}/month`}</h3>
@@ -83,18 +81,11 @@ export default function Page() {
               </div>
               <div className="flex ">
                 <div className="  flex items-center justify-between mt-6 cursor-pointer">
-                  <div className="p-2" onClick={increment}>
+                  <div className="p-2" onClick={() => increment(product)}>
                     <HiOutlinePlusSm style={{ fontSize: "1.5rem" }} />
                   </div>
-                  <input
-                    className="   py-2 mx-1 sm:mx-6    bg-white border-gray-400  "
-                    type="number"
-                    min={1}
-                    max={10}
-                    value={product.quantity}
-                    onChange={onInputNumberChangeHandler}
-                  />{" "}
-                  <div onClick={decrement} className="p-2">
+                  <div className="">{product.quantity}</div>
+                  <div onClick={() => decrement(product)} className="p-2">
                     <HiMinusSm style={{ fontSize: "1.5rem" }} />
                   </div>
                 </div>
@@ -106,7 +97,7 @@ export default function Page() {
       <div className=" h-[300px]   sticky  top-20  p-4  bg-white shadow-md">
         <div className="   text-center text-lg font-sans">Order Summary</div>
         <div className="  text-lg  md: text-center  font-sans pt-2 pb-9">
-          OSubtotal (15 items): $728.92
+          {`  Subtotal (${count} items): $${totalAmount.toFixed(2)}`}
         </div>
         <div className=" text-center  w-full   bg-yellow-300  font-semibold text-black py-2 px-4 border  hover:border-transparent rounded-full    bottom-3     ">
           proceed to checkout
