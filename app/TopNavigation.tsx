@@ -22,7 +22,7 @@ export const TopNavigation = () => {
           <div className="flex items-center gap-1">
             <Image
               src="/logo.svg"
-              alt="Vercel Logo"
+              alt="ShopCart Logo"
               className="dark:invert"
               width={40}
               height={24}

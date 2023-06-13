@@ -7,8 +7,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { SkeletonCard } from "./components/skeleton";
-
-import { addItemToCart, removeItem } from "./Redux/feature/cart/cartSlice";
+import "react-toastify/dist/ReactToastify.css";
+import { addItemToCart } from "./Redux/feature/cart/cartSlice";
 import { useDispatch } from "react-redux";
 
 export default function Home() {
@@ -20,7 +20,14 @@ export default function Home() {
 
   function addToCartHandler(product: ProductModel) {
     dispatch(addItemToCart({ product: product, quantity: 1 }));
-    toast.success("product.name", {
+    toast.success("Item added successfully", {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
       theme: "light",
     });
   }
