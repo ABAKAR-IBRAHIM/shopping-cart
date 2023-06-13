@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <div>
-      <footer className="bg-zinc-100 rounded-lg shadow   shadow-zinc-900 dark:bg-gray-900 ">
+      <footer className="bg-zinc-100 rounded-lg shadow   shadow-zinc-900 dark:bg-gray-900 fixed inset-x-0 bottom-0">
         <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
           <div className="sm:flex sm:items-center sm:justify-between">
             <a
@@ -25,19 +25,28 @@ export default function Footer() {
             </a>
             <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
               <li>
-                <a href="#" className="mr-4 hover:underline md:mr-6 ">
+                <a href="/about" className="mr-4 hover:underline md:mr-6 ">
                   About
                 </a>
               </li>
 
               <li>
-                <a href="#" className="mr-4 hover:underline md:mr-6 ">
+                <a
+                  href="/license
+                "
+                  className="mr-4 hover:underline md:mr-6 "
+                >
                   Licensing
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:underline">
-                  Contact
+                <a
+                  className="flex place-items-center gap-2 p-8"
+                  href="https://github.com/ABAKAR-IBRAHIM/shopping-cart"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Source
                 </a>
               </li>
             </ul>
