@@ -1,10 +1,8 @@
+"use client";
 import { TopNavigation } from "./TopNavigation";
 import "./globals.css";
 import { Providers } from "./Redux/provider";
-export const metadata = {
-  title: "ShoppingCart",
-  description: "Shopping cart Ecomerce App",
-};
+import { SessionProvider } from "next-auth/react";
 
 export default function RootLayout({
   children,
@@ -13,13 +11,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Providers>
-        <body className="bg-white text-black  ">
-          <TopNavigation />
+      <SessionProvider>
+        <Providers>
+          <body className="bg-white text-black  ">
+            <TopNavigation />
 
-          <div className="border-2  border-green-500 flex-1">{children}</div>
-        </body>
-      </Providers>
+            <div className=" flex-1">{children}</div>
+          </body>
+        </Providers>
+      </SessionProvider>
     </html>
   );
 }

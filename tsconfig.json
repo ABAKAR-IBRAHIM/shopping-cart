@@ -28,7 +28,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/api/registerts"
+    "app/api/registerts",
+    "app/components/drop-down.js"
   ],
   "exclude": ["node_modules"]
 }

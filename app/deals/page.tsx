@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import axios from "axios";
-import ProductModel from "../lib/product_type";
+import ProductModel from "../lib/types";
 import { SkeletonCard } from "../components/skeleton";
 export default function Page() {
   const [products, setProduct] = useState<ProductModel[]>([]);

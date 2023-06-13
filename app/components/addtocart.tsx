@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { HiOutlinePlusSm, HiMinusSm } from "react-icons/hi";
-import ProductModel from "../lib/product_type";
+import ProductModel from "../lib/types";
 
 interface Props {
   product: ProductModel;

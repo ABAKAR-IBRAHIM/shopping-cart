@@ -1,5 +1,5 @@
 "use client";
-import ProductModel, { CartModel } from "@/app/lib/product_type";
+import ProductModel, { CartModel } from "@/app/lib/types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 const initialState: CartModel = {

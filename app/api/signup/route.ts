@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 
 export async function POST(request: Request) {
   const { email, password } = await request.json();
-  console.log(`email ${email} password ${password}`);
+
   try {
     await connectDatabase();
     const hashedpassword = await bcrypt.hash(password, 10);

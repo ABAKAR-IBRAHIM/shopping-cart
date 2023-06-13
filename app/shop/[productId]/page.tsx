@@ -2,7 +2,7 @@
 import Gallery from "@/app/components/gallery";
 import Productdetails from "@/app/components/productdetails";
 import axios from "axios";
-import ProductModel from "@/app/lib/product_type";
+import ProductModel from "@/app/lib/types";
 import { useState, useEffect } from "react";
 
 export default function Page({ params }: { params: { productId: string } }) {

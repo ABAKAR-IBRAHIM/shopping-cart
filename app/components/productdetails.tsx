@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import ProductModel from "../lib/product_type";
+import ProductModel from "../lib/types";
 import ReactStars from "react-stars";
 import AddToCart from "./addtocart";
 import { SkeletonCard } from "./skeleton";

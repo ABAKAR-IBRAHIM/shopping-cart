@@ -7,7 +7,7 @@ import ReactStars from "react-stars";
 import axios from "axios";
 import type { RootState } from "../Redux/store";
 import { useSelector, useDispatch } from "react-redux";
-import ProductModel from "../lib/product_type";
+import ProductModel from "../lib/types";
 import { SkeletonCard } from "../components/skeleton";
 export default function Page() {
   const [products, setProduct] = useState<ProductModel[]>([]);

@@ -7,7 +7,7 @@ import { HiMinusSm, HiOutlinePlusSm } from "react-icons/hi";
 import { useSelector } from "react-redux";
 import { RootState } from "../Redux/store";
 import Link from "next/link";
-import ProductModel from "../lib/product_type";
+import ProductModel from "../lib/types";
 import { useDispatch } from "react-redux";
 import {
   incrementQuantity,

@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ReactStars from "react-stars";
-import ProductModel from "./lib/product_type";
+import ProductModel from "./lib/types";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";

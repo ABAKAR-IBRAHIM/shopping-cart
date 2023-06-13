@@ -2,7 +2,7 @@
 import Image from "next/image";
 
 import React, { useState } from "react";
-import ProductModel from "../lib/product_type";
+import ProductModel from "../lib/types";
 import { SkeletonCard } from "./skeleton";
 interface TImage {
   _id: number;

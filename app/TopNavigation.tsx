@@ -1,15 +1,18 @@
 "use client";
 import React, { useState } from "react";
-
+import { signIn, signOut, useSession } from "next-auth/react";
 import { MdAddShoppingCart, MdPersonOutline } from "react-icons/md";
 import { BiSearch } from "react-icons/bi";
 import { TfiMenu } from "react-icons/tfi";
 import Image from "next/image";
 import { AiOutlineClose } from "react-icons/ai";
 import Link from "next/link";
+import DropDown from "./components/drop-down";
 
 export const TopNavigation = () => {
+  const { data: session, status } = useSession();
   const [search, SetSearch] = useState("");
+  const [dropdown, setDropDown] = useState(false);
   let [open, setOpen] = useState(false);
 
   return (
@@ -73,18 +76,23 @@ export const TopNavigation = () => {
             />
           </div>
         </div>
-        <Link href={"/account"}>
-          <div
-            className={`flex  text-base  items-center gap-1  pt-4
-         ${open ? "" : "hidden md:flex"}`}
-          >
-            <MdPersonOutline size={22} />
-            <span>Account</span>
-          </div>
-        </Link>
+
+        <div className="`flex  text-base  items-center gap-1  pt-4  ">
+          {!session && (
+            <div onClick={() => signIn()} className="hover:bg-zinc-300">
+              Sign In
+            </div>
+          )}
+          {session?.user && (
+            <div onClick={() => setDropDown(!dropdown)}>
+              <DropDown dropdown={dropdown} />
+            </div>
+          )}
+        </div>
+
         <Link href={"/cart"}>
           <div
-            className={`flex  text-base  items-center gap-1  pt-4
+            className={`flex  text-base  items-center gap-1  pt-4 
          ${open ? "" : "hidden md:flex"}`}
           >
             <MdAddShoppingCart size={22} />

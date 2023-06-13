@@ -22,3 +22,8 @@ export interface CartModel {
   totalQuantity: number;
   totalAmount: number;
 }
+
+export interface UserModel {
+  email: string;
+  password: string;
+}
