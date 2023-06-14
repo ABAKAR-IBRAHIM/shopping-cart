@@ -1,13 +1,14 @@
 "use client";
 import React, { useState } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
-import { MdAddShoppingCart, MdPersonOutline } from "react-icons/md";
+
 import { BiSearch } from "react-icons/bi";
 import { TfiMenu } from "react-icons/tfi";
 import Image from "next/image";
 import { AiOutlineClose } from "react-icons/ai";
 import Link from "next/link";
 import DropDown from "./components/drop-down";
+import CartQuantity from "./components/cart-quantity";
 
 export const TopNavigation = () => {
   const { data: session, status } = useSession();
@@ -90,15 +91,14 @@ export const TopNavigation = () => {
           )}
         </div>
 
-        <Link href={"/cart"}>
+        <div>
           <div
             className={`flex  text-base  items-center gap-1  pt-4 
          ${open ? "" : "hidden md:flex"}`}
           >
-            <MdAddShoppingCart size={22} />
-            <span>Cart</span>
+            <CartQuantity />
           </div>
-        </Link>
+        </div>
       </div>
     </div>
   );
