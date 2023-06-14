@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <div>
-      <footer className="bg-zinc-100 rounded-lg shadow   shadow-zinc-900 dark:bg-gray-900 fixed inset-x-0 bottom-0">
+      <footer className="bg-zinc-100 rounded-lg shadow   shadow-zinc-900 dark:bg-gray-900 ">
         <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
           <div className="sm:flex sm:items-center sm:justify-between">
             <a

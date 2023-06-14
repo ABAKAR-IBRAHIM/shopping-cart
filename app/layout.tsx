@@ -16,10 +16,14 @@ export default function RootLayout({
       <SessionProvider>
         <Providers>
           <body className="bg-white text-black  ">
-            <TopNavigation />
-            <ToastContainer />
-            <div className=" flex-1">{children}</div>
-            <Footer />
+            <div className="flex flex-col min-h-screen">
+              <div className="flex-1">
+                <TopNavigation />
+                <ToastContainer />
+                <div className=" flex-1">{children}</div>
+              </div>
+              <Footer />
+            </div>
           </body>
         </Providers>
       </SessionProvider>
