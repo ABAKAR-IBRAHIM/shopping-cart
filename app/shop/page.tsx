@@ -5,8 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import ReactStars from "react-stars";
 import axios from "axios";
-import type { RootState } from "../Redux/store";
-import { useSelector, useDispatch } from "react-redux";
 import ProductModel from "../lib/types";
 import { SkeletonCard } from "../components/skeleton";
 export default function Page() {
@@ -14,10 +12,10 @@ export default function Page() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("api/get_home_poducts").then((res) => {
+    axios.get("api/get_shop_product").then((res) => {
       setProduct(res.data.products);
       setLoading(false);
-      console.log(res.data.products[0].images[0]);
+      console.log(`images ${res.data.products[0].images[0]}`);
     });
   }, []);
   if (loading) {

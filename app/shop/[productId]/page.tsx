@@ -11,7 +11,7 @@ export default function Page({ params }: { params: { productId: string } }) {
 
   useEffect(() => {
     axios
-      .get("/api/find_one", { params: { id: params.productId } })
+      .get("/api/find_one_shop", { params: { id: params.productId } })
       .then((res) => {
         setProduct(res.data.products);
 

@@ -8,7 +8,7 @@ export default function Productdetails({ product }: { product: ProductModel }) {
   if (!product) {
     return (
       <div className=" p-16">
-        <SkeletonCard />;
+        <SkeletonCard />
       </div>
     );
   }

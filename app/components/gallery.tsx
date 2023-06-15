@@ -21,7 +21,7 @@ const Gallery: React.FC<Props> = ({ product }) => {
   if (!product) {
     return (
       <div className=" p-16">
-        <SkeletonCard />;
+        <SkeletonCard />
       </div>
     );
   }

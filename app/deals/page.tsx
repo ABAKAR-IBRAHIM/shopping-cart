@@ -13,7 +13,7 @@ export default function Page() {
     axios.get("api/get_home_poducts").then((res) => {
       setProduct(res.data.products);
       setLoading(false);
-      console.log(res.data.products[0].images[0]);
+      console.log(`images ${res.data.products[0].images[0]}`);
     });
   }, []);
   if (loading) {
