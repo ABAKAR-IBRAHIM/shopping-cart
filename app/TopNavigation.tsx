@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
-
+import { useRouter } from "next/navigation";
 import { BiSearch } from "react-icons/bi";
 import { TfiMenu } from "react-icons/tfi";
 import Image from "next/image";
@@ -11,10 +11,16 @@ import DropDown from "./components/drop-down";
 import CartQuantity from "./components/cart-quantity";
 
 export const TopNavigation = () => {
+  const router = useRouter();
   const { data: session, status } = useSession();
-  const [search, SetSearch] = useState("");
+
+  const [query, SetQuery] = useState("");
   const [dropdown, setDropDown] = useState(false);
   let [open, setOpen] = useState(false);
+  const submitHandler = (e: any) => {
+    e.preventDefault();
+    router.push(`/search?query=${query}`);
+  };
 
   return (
     <div className="  bo z-10 shadow-md w-full fixed top-0 left-0">
@@ -68,21 +74,27 @@ export const TopNavigation = () => {
             <div className=" pr-4 rounded-tr-full rounded-br-full absolute pointer-events-none">
               <BiSearch size={20} />
             </div>
-            <input
-              placeholder="Search"
-              value={search}
-              onChange={(event) => SetSearch(event.target.value)}
-              className="   text-black  border-zinc-700  placeholder:text-black bg-white border-[1px] 
+            <form onSubmit={submitHandler}>
+              <input
+                placeholder="Search"
+                value={query}
+                onChange={(event) => SetQuery(event.target.value)}
+                className="   text-black  border-zinc-700  placeholder:text-black bg-white border-[1px] 
             rounded-full pl-4  focus:outline-none focus:ring-[1px] focus:ring-sky-500 h-[32px]  lg:min-w-[420px]"
-            />
+              />
+            </form>
           </div>
         </div>
 
         <div className="`flex  text-base  items-center gap-1  pt-4  ">
           {!session && (
-            <div onClick={() => signIn()} className="hover:bg-zinc-300">
-              Sign In
-            </div>
+            <Link href={"/api/auth/signin"}>
+              <div //onClick={() => signIn()}
+                className="hover:bg-zinc-300"
+              >
+                Sign In
+              </div>
+            </Link>
           )}
           {session?.user && (
             <div onClick={() => setDropDown(!dropdown)}>

@@ -2,6 +2,7 @@
 import Gallery from "@/app/components/gallery";
 import Productdetails from "@/app/components/productdetails";
 import axios from "axios";
+
 import ProductModel from "@/app/lib/types";
 import { useState, useEffect } from "react";
 

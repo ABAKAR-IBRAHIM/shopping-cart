@@ -35,11 +35,6 @@ export default function Productdetails({ product }: { product: ProductModel }) {
         )}/month`}</h3>
       </div>
       <AddToCart product={product} />
-      <div className="p-8">
-        <div className="  bg-green-900 hover:bg-green-800 max-w-[150px]    font-semibold text-white py-2 px-4 pr-4  border border-gray-900 hover:border-transparent rounded-full  ">
-          Add to Cart
-        </div>
-      </div>
     </div>
   );
 }
