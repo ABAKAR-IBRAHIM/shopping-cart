@@ -4,6 +4,7 @@ export default interface ProductModel {
   imageSrc: string;
   discription: string;
   price: number;
+  off: number;
   rating: number;
   review: number;
   quantity: number;

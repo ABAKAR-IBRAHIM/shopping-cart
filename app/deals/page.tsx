@@ -10,7 +10,7 @@ export default function Page() {
   const [products, setProduct] = useState<ProductModel[]>([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    axios.get("api/get_home_poducts").then((res) => {
+    axios.get("api/get_deals_product").then((res) => {
       setProduct(res.data.products);
       setLoading(false);
       console.log(`images ${res.data.products[0].images[0]}`);
@@ -58,7 +58,7 @@ export default function Page() {
                   <div className="flex justify-center md:justify-start flex-col  flex-grow overflow-hidden">
                     <div className="self-center flex gap-2">
                       <div className=" bg-red-600  p-[1px]   text-sm text-white">
-                        12%of{" "}
+                        {product.off}{" "}
                       </div>
                       <div className=" text-red-600">Deal</div>
                     </div>

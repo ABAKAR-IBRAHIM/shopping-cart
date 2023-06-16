@@ -13,7 +13,7 @@ import { useDispatch } from "react-redux";
 
 export default function Home() {
   const [products, setProduct] = useState<ProductModel[]>([]);
-
+  const [mostSelling, setMostSelling] = useState<ProductModel[]>([]);
   const [loading, setLoading] = useState(true);
 
   const dispatch = useDispatch();
@@ -34,6 +34,14 @@ export default function Home() {
 
   useEffect(() => {
     axios.get("api/get_home_poducts").then((res) => {
+      setMostSelling(res.data.products);
+      setLoading(false);
+      console.log(res.data.products[0].images[0]);
+    });
+  }, []);
+
+  useEffect(() => {
+    axios.get("api/get_most_selling").then((res) => {
       setProduct(res.data.products);
       setLoading(false);
       console.log(res.data.products[0].images[0]);
@@ -70,9 +78,7 @@ export default function Home() {
             </div>
           </Link>
         </div>
-        <div className=" p-16  font-bold  text-4xl">
-          {"Today's Best Daily Deals"}
-        </div>
+        <div className=" p-16  font-bold  text-4xl">Most Selling Products</div>
         <div className="  pt-20 grid  relative grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {products.map((product) => (
             <div key={product._id}>
@@ -115,12 +121,12 @@ export default function Home() {
         </div>
 
         <div className=" p-16  font-bold  text-4xl">
-          Most Selling Products
+          {"Today's Best Daily Deals"}
           <p className=""></p>
         </div>
 
         <div className="  pt-20 grid  relative grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-          {products.map((product) => (
+          {mostSelling.map((product) => (
             <div key={product._id}>
               <Image
                 className="hover:grow hover:shadow-lg bg-zinc-100 "
@@ -149,7 +155,10 @@ export default function Home() {
               </div>
 
               <div className="pt-2 ">
-                <button className="bg-transparent hover:bg-green-900  text-gray-900 font-semibold hover:text-white py-2 px-4 border border-gray-900 hover:border-transparent rounded-full ">
+                <button
+                  onClick={() => addToCartHandler(product)}
+                  className="bg-transparent hover:bg-green-900  text-gray-900 font-semibold hover:text-white py-2 px-4 border border-gray-900 hover:border-transparent rounded-full "
+                >
                   Add to Cart
                 </button>
               </div>

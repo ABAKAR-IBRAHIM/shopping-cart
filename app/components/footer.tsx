@@ -46,7 +46,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Source
+                  Source code
                 </a>
               </li>
             </ul>
