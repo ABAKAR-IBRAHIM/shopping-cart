@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 
 import { HiMinusSm, HiOutlinePlusSm } from "react-icons/hi";
@@ -9,18 +9,22 @@ import { RootState } from "../Redux/store";
 import Link from "next/link";
 import ProductModel from "../lib/types";
 import { useDispatch } from "react-redux";
+import { removeItem } from "../Redux/feature/cart/cartSlice";
 import {
   incrementQuantity,
   decrementQuantity,
 } from "../Redux/feature/cart/cartSlice";
 export default function Page() {
-  const [counter, setCounter] = useState(1);
   const items = useSelector((state: RootState) => state.cart.items);
   const count = useSelector((state: RootState) => state.cart.totalQuantity);
   const totalAmount = useSelector((state: RootState) => state.cart.totalAmount);
   const dispatch = useDispatch();
   function increment(product: ProductModel) {
     dispatch(incrementQuantity({ product }));
+  }
+
+  function removeItems(product: ProductModel) {
+    dispatch(removeItem({ product }));
   }
   function decrement(product: ProductModel) {
     dispatch(decrementQuantity({ product }));
@@ -71,7 +75,10 @@ export default function Page() {
                         } Or $${Math.round(product.price * 0.1).toFixed(
                           2
                         )}/month`}</h3>
-                        <div className="self-center p-8  pt-4 font-bold text-lg text-red-600 ">
+                        <div
+                          onClick={() => removeItems(product)}
+                          className="self-center p-8  pt-4 font-bold text-lg text-red-600 "
+                        >
                           Delete
                         </div>
                       </div>

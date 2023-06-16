@@ -42,13 +42,13 @@ export const counterSlice = createSlice({
       state.totalQuantity = sum;
       state.totalAmount = total;
     },
-    removeItem: (state, action) => {
+
+    removeItem: (state, action: PayloadAction<{ product: ProductModel }>) => {
       const removeItem = state.items.filter(
-        (item) => item._id !== action.payload
+        (item) => item._id !== action.payload.product._id
       );
       state.items = removeItem;
     },
-
     incrementQuantity: (
       state,
       action: PayloadAction<{ product: ProductModel }>
