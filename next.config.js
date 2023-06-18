@@ -14,6 +14,9 @@ const nextConfig = {
       },
     ],
   },
+  env: {
+    stripe_public_key: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
+  },
 };
 
 module.exports = nextConfig;

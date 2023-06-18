@@ -48,6 +48,17 @@ export const counterSlice = createSlice({
         (item) => item._id !== action.payload.product._id
       );
       state.items = removeItem;
+      var sum = 0;
+      var total = 0;
+
+      for (let i = 0; i < state.items.length; i++) {
+        sum += state.items[i].quantity;
+        total += state.items[i].totalPrice;
+      }
+
+      //setting the totalQuantity and totalAmount
+      state.totalQuantity = sum;
+      state.totalAmount = total;
     },
     incrementQuantity: (
       state,

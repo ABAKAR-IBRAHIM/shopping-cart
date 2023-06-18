@@ -14,6 +14,13 @@ import {
   incrementQuantity,
   decrementQuantity,
 } from "../Redux/feature/cart/cartSlice";
+
+import "react-toastify/dist/ReactToastify.css";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
+import { toast } from "react-toastify";
+
+const stripePromise = loadStripe(process.env.stripe_public_key!);
 export default function Page() {
   const items = useSelector((state: RootState) => state.cart.items);
   const count = useSelector((state: RootState) => state.cart.totalQuantity);
@@ -29,6 +36,22 @@ export default function Page() {
   function decrement(product: ProductModel) {
     dispatch(decrementQuantity({ product }));
   }
+
+  const Order = async () => {
+    const stripe = await stripePromise;
+    const checkoutSession: any = await axios.post("/api/checkout_sessions", {
+      items: items,
+      email: "abakar@gmail.com",
+    });
+
+    console.log(`checkoutSession ${checkoutSession.data.id}`);
+    const result = await stripe?.redirectToCheckout({
+      sessionId: checkoutSession.data.id,
+    });
+    if (result?.error) {
+      toast.error(result?.error.message);
+    }
+  };
 
   if (items.length == 0)
     return (
@@ -106,10 +129,68 @@ export default function Page() {
         <div className="  text-lg  md: text-center  font-sans pt-2 pb-9">
           {`  Subtotal (${count} items): $${totalAmount.toFixed(2)}`}
         </div>
-        <div className=" text-center  w-full   bg-yellow-300  font-semibold text-black py-2 px-4 border  hover:border-transparent rounded-full    bottom-3     ">
+        <div
+          onClick={Order}
+          className=" text-center  w-full   bg-yellow-300  font-semibold text-black py-2 px-4 border  hover:border-transparent rounded-full    bottom-3     "
+        >
           proceed to checkout
         </div>
       </div>
     </div>
   );
 }
+
+const data = {
+  items: [
+    {
+      name: "Laptop Sleeve 14",
+      imageSrc:
+        "https://res.cloudinary.com/djyb0n6nq/image/upload/v1686096179/home%20products/81On3MEFDRL._AC_SX679_-removebg-preview_jtvz4b.png",
+      discription:
+        "This laptop bag features a high-quality padded outer shell with a cushioned design",
+      price: 39.99,
+      rating: 4.7,
+      review: 24,
+      quantity: 2,
+      images: [
+        {
+          image:
+            "https://res.cloudinary.com/djyb0n6nq/image/upload/v1686077445/home%20products/63e8c4e61eb4ad4af6e75689_macbook_13-min_rziwjv.png",
+        },
+        {
+          image:
+            "https://res.cloudinary.com/djyb0n6nq/image/upload/v1686077445/home%20products/63e8c4e61eb4ad4af6e75689_macbook_13-min_rziwjv.png",
+        },
+        {
+          image:
+            "https://res.cloudinary.com/djyb0n6nq/image/upload/v1686077445/home%20products/63e8c4e61eb4ad4af6e75689_macbook_13-min_rziwjv.png",
+        },
+        {
+          name: "AirPods Max",
+          imageSrc:
+            "https://res.cloudinary.com/djyb0n6nq/image/upload/v1686097997/home%20products/media_result_20230606_cbc50b1a-306b-484e-90e8-15595394e5f5_r8hb7a.png",
+          discription:
+            "NOISE CANCELLING WIRELESS HEADPHONES: The perfect balance of quiet, comfort, and sound",
+          price: 279.0,
+          rating: 4.8,
+          review: 453,
+          quantity: 2,
+          images: [
+            {
+              image:
+                "https://res.cloudinary.com/djyb0n6nq/image/upload/v1686077445/home%20products/63e8c4e61eb4ad4af6e75689_macbook_13-min_rziwjv.png",
+            },
+            {
+              image:
+                "https://res.cloudinary.com/djyb0n6nq/image/upload/v1686077445/home%20products/63e8c4e61eb4ad4af6e75689_macbook_13-min_rziwjv.png",
+            },
+            {
+              image:
+                "https://res.cloudinary.com/djyb0n6nq/image/upload/v1686077445/home%20products/63e8c4e61eb4ad4af6e75689_macbook_13-min_rziwjv.png",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
