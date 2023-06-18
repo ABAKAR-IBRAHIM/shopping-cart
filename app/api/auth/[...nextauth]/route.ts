@@ -51,6 +51,7 @@ const handler = NextAuth({
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
+
   session: {
     strategy: "jwt",
   },
@@ -60,9 +61,9 @@ const handler = NextAuth({
     logo: "/logo.svg", // Absolute URL to image
     buttonText: "", // Hex color code
   },
-  pages: {
-    signIn: "/auth/signin",
-  },
+  // pages: {
+  //   signIn: "/auth/signin",
+  // },
 });
 
 export { handler as GET, handler as POST };
