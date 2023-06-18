@@ -7,7 +7,7 @@ export default function Page() {
       full-stack technologies including Nextjs, Typescript, React, Tailwindcss,
       Nodejs, and MongoDb among others. This portfolio project is a
       demonstration of my skills and I hope you find it enjoyable and useful to
-      work with. Sincerely, Abalkar Ibrahim
+      work with. Sincerely, Abakar Ibrahim
     </div>
   );
 }
