@@ -5,7 +5,7 @@ import axios from "axios";
 async function SignIn(email: string, password: string) {
   const options = {
     method: "GET",
-    url: `http://localhost:3000/api/signin?email=${email}&password=${password}`,
+    url: `${process.env.HOST}/api/signin?email=${email}&password=${password}`,
 
     data: {
       email: email,
