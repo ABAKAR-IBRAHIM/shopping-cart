@@ -86,7 +86,10 @@ export const TopNavigation = () => {
           </div>
         </div>
 
-        <div className="`flex  text-base  items-center gap-1  pt-4  ">
+        <div
+          className={`flex  text-base  items-center gap-1  pt-4
+         ${open ? "" : "hidden md:flex"}`}
+        >
           {!session && (
             <Link href={"/api/auth/signin"}>
               <div //onClick={() => signIn()}
