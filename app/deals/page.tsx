@@ -58,7 +58,8 @@ export default function Page() {
                   <div className="flex justify-center md:justify-start flex-col  flex-grow overflow-hidden">
                     <div className="self-center flex gap-2">
                       <div className=" bg-red-600  p-[1px]   text-sm text-white">
-                        {product.off}{" "}
+                        {product.off}
+                        {"% off"}
                       </div>
                       <div className=" text-red-600">Deal</div>
                     </div>
