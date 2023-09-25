@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { BiSearch } from "react-icons/bi";
 import { TfiMenu } from "react-icons/tfi";
