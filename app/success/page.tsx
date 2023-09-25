@@ -29,7 +29,7 @@ export default function Page() {
                 thank for shopping with us we will send a confirmation when your
                 item ships
               </p>
-              <a className="inline-flex items-center px-4 py-2 text-white bg-indigo-600 border border-indigo-600 rounded rounded-full hover:bg-indigo-700 focus:outline-none focus:ring">
+              <div className="inline-flex items-center px-4 py-2 text-white bg-indigo-600 border border-indigo-600 rounded rounded-full hover:bg-indigo-700 focus:outline-none focus:ring">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-3 h-3 mr-2"
@@ -47,7 +47,7 @@ export default function Page() {
                 <Link href={"/"}>
                   <span className="text-sm font-medium">Home</span>
                 </Link>
-              </a>
+              </div>
             </div>
           </div>
         </div>
