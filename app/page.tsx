@@ -69,7 +69,7 @@ export default function Home() {
       <div className="p-[70px]">
         <div className="  h-[320px] relative">
           <Image src="/hero.webp" alt="hero  image" fill={true} />
-          <div className=" absolute  w-80   font-bold  text-2xl  p-2 tex m-auto left-0 right-0  backdrop-filter backdrop-blur-[23px] bg-palette-card/60">
+          <div className=" absolute  w-80   font-bold  text-2xl  p-2 tex m-auto left-0 right-0    top-8 backdrop-filter backdrop-blur-[23px] bg-palette-card/60">
             Pay in your local currency and shop with confident
           </div>
           <Link href={"/shop"}>
